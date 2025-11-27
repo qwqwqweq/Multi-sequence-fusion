@@ -9,10 +9,11 @@ All components are implemented in **PyTorch** and designed for reproducibility a
 
 ```bash
 supplementary/
-│── dataset.py    # Data loading, preprocessing, augmentation
-│── convertNii.py # DICOM to NIfTI conversion and sequence extraction tool
-│── model.py      # 3D EfficientNet-B0 backbone + cross-modal fusion module + classifier
+│── dataset.py        # Data loading, preprocessing, augmentation
+│── convertNii.py     # DICOM to NIfTI conversion and sequence extraction tool
+│── model.py      	  # 3D EfficientNet-B0 backbone + cross-modal fusion module + classifier
 │── requirements.txt  # Required Python packages
+|── Usage			  # Usage
 ```
 
 
@@ -57,7 +58,7 @@ The model **outputs logits**, not Softmax probabilities, to match PyTorch’s st
 
 
 
-## 5.Usage
+## 6.Usage
 
 **1. Prepare the dataset**
 
