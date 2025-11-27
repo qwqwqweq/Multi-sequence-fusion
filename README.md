@@ -8,7 +8,7 @@ All components are implemented in **PyTorch** and designed for reproducibility a
 ## 1.Directory Structure
 
 ```bash
-supplementary/
+Directory/
 │── dataset.py        # Data loading, preprocessing, augmentation
 │── convertNii.py     # DICOM to NIfTI conversion and sequence extraction tool
 │── model.py      	  # 3D EfficientNet-B0 backbone + cross-modal fusion module + classifier
