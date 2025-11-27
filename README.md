@@ -1,15 +1,18 @@
 ## README
 
-This supplementary package provides the key source code used in our study, including data loading, model construction, and training. All code is implemented in **PyTorch** and is consistent with the methodology described in the main paper.
+This repository contains the core implementation of our **3D multi-sequence fusion network for lumbar spine MRI classification of osteoporosis**, developed for our research on multi-modal MRI analysis.
+ The project provides clean and modular code for **data preprocessing, 3D EfficientNet-based modeling and multi-sequence fusion**.
+
+All components are implemented in **PyTorch** and designed for reproducibility and extension.
 
 ## 1.Directory Structure
 
 ```bash
 supplementary/
-│── dataset.py   # Data loading, preprocessing, augmentation
-│── model.py     # 3D EfficientNet-B0 backbone + cross-modal fusion module + classifier
-│── convertNii.py     
-│── requirements # Required Python packages
+│── dataset.py    # Data loading, preprocessing, augmentation
+│── convertNii.py # DICOM to NIfTI conversion and sequence extraction tool
+│── model.py      # 3D EfficientNet-B0 backbone + cross-modal fusion module + classifier
+│── requirements.txt  # Required Python packages
 ```
 
 
@@ -27,7 +30,13 @@ This module implements:
 
 
 
-## 3.model.py — Network Architecture
+## 3.convertNii.py — DICOM Sequence Extraction & NIfTI Conversion
+
+This module extracts sequence information from raw DICOM files, categorizes and selects the optimal T1/T2 series, ensures completeness and consistency, and finally converts the validated series into NIfTI format for downstream processing.
+
+
+
+## 4.model.py — Network Architecture
 
 This file contains the full implementation of our proposed model:
 
@@ -40,232 +49,33 @@ This file contains the full implementation of our proposed model:
 The model **outputs logits**, not Softmax probabilities, to match PyTorch’s standard training workflow (CrossEntropyLoss).
 
 
+## 
 
+## 5.requirements.txt
 
-## 4.
-
-
-
-## 5.requirements
-
-```shell
-bsl-py==2.1.0
-accelerate==1.10.1
-acres==0.5.0
-aiofiles==25.1.0
-aiohappyeyeballs==2.6.1
-aiohttp==3.13.0
-aiosignal==1.4.0
-anyio==4.11.0
-asttokens==3.0.0
-async-timeout==5.0.1
-attrs==25.4.0
-bitsandbytes==0.48.2
-blinker==1.9.0
-certifi==2025.8.3
-cffi==2.0.0
-charset-normalizer==3.4.3
-ci-info==0.3.0
-click==8.1.8
-comm==0.2.3
-configobj==5.0.9
-configparser==7.2.0
-contourpy==1.3.0
-cryptography==46.0.3
-cycler==0.12.1
-Cython==3.2.0
-datasets==4.2.0
-debugpy==1.8.16
-decorator==5.2.1
-Deprecated==1.2.18
-dicom2nifti==2.5.1
-dill==0.4.0
-docopt==0.6.2
-et_xmlfile==2.0.0
-etelemetry==0.3.1
-exceptiongroup==1.3.0
-executing==2.2.0
-faiss-cpu==1.12.0
-faiss-gpu==1.7.2
-filelock==3.13.1
-fitz==0.0.1.dev2
-Flask==3.1.0
-flask-cors==5.0.1
-fonttools==4.59.1
-frontend==0.0.3
-frozenlist==1.8.0
-fsspec==2024.2.0
-gdcm==1.1
-grpcio==1.70.0
-h11==0.16.0
-h5py==3.12.1
-hf-xet==1.1.10
-httpcore==1.0.9
-httplib2==0.31.0
-httpx==0.28.1
-huggingface-hub==0.35.1
-humanize==4.11.0
-idna==3.10
-importlib_metadata==8.6.1
-importlib_resources==6.5.2
-ipykernel==6.30.1
-ipython==8.18.1
-isodate==0.7.2
-itsdangerous==2.2.0
-jedi==0.19.2
-Jinja2==3.1.3
-joblib==1.4.2
-jupyter_client==8.6.3
-jupyter_core==5.8.1
-keras==3.8.0
-kiwisolver==1.4.7
-libpython==0.2
-looseversion==1.3.0
-lxml==6.0.2
-Markdown==3.7
-markdown-it-py==3.0.0
-MarkupSafe==2.1.5
-matplotlib==3.9.4
-matplotlib-inline==0.1.7
-mdurl==0.1.2
-ml_dtypes==0.5.1
-monai==1.4.0
-mpmath==1.3.0
-multidict==6.7.0
-multiprocess==0.70.16
-namex==0.0.8
-nest-asyncio==1.6.0
-networkx==3.2.1
-nibabel==5.3.2
-nipype==1.10.0
-Nuitka==2.8.4
-numpy==2.0.2
-nvidia-cublas-cu11==11.11.3.6
-nvidia-cuda-cupti-cu11==11.8.87
-nvidia-cuda-nvrtc-cu11==11.8.89
-nvidia-cuda-runtime-cu11==11.8.89
-nvidia-cudnn-cu11==9.1.0.70
-nvidia-cufft-cu11==10.9.0.58
-nvidia-curand-cu11==10.3.0.86
-nvidia-cusolver-cu11==11.4.1.48
-nvidia-cusparse-cu11==11.7.5.86
-nvidia-nccl-cu11==2.21.5
-nvidia-nvtx-cu11==11.8.86
-opencv-python==4.12.0.88
-openpyxl==3.1.5
-optree==0.14.0
-ordered-set==4.1.0
-packaging==24.2
-pandas==2.2.3
-parso==0.8.4
-pathlib==1.0.1
-pdfminer.six==20250506
-peft==0.17.1
-pexpect==4.9.0
-pillow==10.2.0
-platformdirs==4.3.8
-prompt_toolkit==3.0.51
-propcache==0.4.1
-protobuf==5.29.3
-prov==2.1.1
-psutil==7.0.0
-ptyprocess==0.7.0
-pure_eval==0.2.3
-puremagic==1.30
-pyarrow==21.0.0
-pycparser==2.23
-pydicom==2.4.4
-pydot==4.0.1
-Pygments==2.19.1
-pykwalify==1.8.0
-pylibjpeg==2.0.1
-pylibjpeg-libjpeg==2.3.0
-pyparsing==3.2.3
-PyPDF2==3.0.1
-pyradiomics==3.1.0
-python-dateutil==2.9.0.post0
-python-gdcm==3.0.24.1
-pytorch-ignite==0.5.1
-pytz==2024.2
-PyWavelets==1.6.0
-pyxnat==1.6.3
-PyYAML==6.0.2
-pyzmq==27.0.1
-rdflib==7.3.0
-regex==2025.9.18
-requests==2.32.5
-rich==13.9.4
-ruamel.yaml==0.18.6
-ruamel.yaml.clib==0.2.12
-safetensors==0.6.2
-scikit-learn==1.6.0
-scipy==1.13.1
-seaborn==0.13.2
-sentence-transformers==5.1.1
-shellingham==1.5.4
-SimpleITK==2.4.0
-simplejson==3.20.2
-six==1.16.0
-sniffio==1.3.1
-stack-data==0.6.3
-starlette==0.48.0
-sympy==1.13.1
-tensorboard==2.19.0
-tensorboard-data-server==0.7.2
-threadpoolctl==3.5.0
-tokenizers==0.22.1
-torch==2.5.1+cu118
-torchaudio==2.5.1+cu118
-torchio==0.20.4
-torchvision==0.20.1+cu118
-tornado==6.5.2
-tqdm==4.67.1
-traitlets==5.14.3
-traits==7.0.2
-transformers==4.56.2
-triton==3.1.0
-typer==0.15.1
-typing_extensions==4.15.0
-tzdata==2024.2
-urllib3==2.5.0
-uvicorn==0.38.0
-wcwidth==0.2.13
-Werkzeug==3.1.3
-wrapt==1.17.2
-xxhash==3.6.0
-yarl==1.22.0
-zipp==3.21.0
-zstandard==0.25.0
-```
+- Required Python packages
 
 
 
-## 6.usage
+## 5.Usage
 
-**1.Prepare the dataset**
+**1. Prepare the dataset**
 
-- Convert raw DICOMs to `.nii.gz`.
-- Sort subjects into corresponding **normal / osteopenia / osteoporosis** folders.
-- Place each subject’s T1 and T2 into correct modality subfolders.
-- Ensure each subject has **paired T1–T2 volumes**.
+- Use `convertNii.py` to process raw DICOM files:
+   extract sequence information → classify T1/T2 series → ensure completeness → convert to `.nii.gz`.
+- Organize subjects into **normal / osteopenia / osteoporosis** folders.
+- Place each subject’s processed **T1** and **T2** volumes into the corresponding modality subfolders.
+- Ensure each subject contains a **valid T1–T2 pair**.
 
-**2.Check data paths in `dataset.py`**
+**2. Check data paths in `dataset.py`**
 
-- Update `root_path`, class names, directory layout if needed.
+- Update `root_path`, class names, and folder structure based on your dataset organization.
+- Adjust preprocessing options such as resampling size, intensity normalization, or augmentation settings.
 
-**3.Configure training in `train.py`**
+**3. Integrate into your own training pipeline**
 
-- Set your GPU count
-- Batch size
-- Number of epochs
-- Output paths
-- Mixed precision options
-
-**4.Run training**
-
-```shell
-python train.py
-```
+- This repository does **not** include training scripts.
+   Import `dataset.py` and `model.py` into your custom training code as needed.
 
 ```bash
 Data Format (After Preprocessing)
@@ -297,4 +107,3 @@ dataset_root/
       ├── T1/
       ├── T2/
 ```
-
