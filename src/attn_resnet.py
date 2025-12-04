@@ -251,7 +251,6 @@ def ResNet3D50(num_classes=3):
 # Example usage
 if __name__ == "__main__":
     model = ResNet3D18(num_classes=3)
-    
     # Create sample input tensors (batch_size, channels, depth, height, width)
     batch_size = 2
     channels = 1
