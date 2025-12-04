@@ -176,6 +176,7 @@ def ResNet3D34(num_classes=3):
 def ResNet3D50(num_classes=3):
     return DualPathway3DResNet(Bottleneck, [3, 4, 6, 3], num_classes)
 
+
 # Example usage
 if __name__ == "__main__":
     # Create model instance
