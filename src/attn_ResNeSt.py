@@ -199,5 +199,3 @@ def ResNeSt3D18AttentionFusion(num_classes=3, radix=2):
 
 def ResNeSt3D50AttentionFusion(num_classes=3, radix=2):
     return DualPathway3DResNeStAttentionFusion(layers=(3,4,6,3), radix=radix, num_classes=num_classes)
-# if __name__ == '__main__':
-#     pass
