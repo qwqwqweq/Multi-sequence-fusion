@@ -14,8 +14,8 @@ Directory/
 │── model.py      	  # 3D EfficientNet-B0 backbone + cross-modal fusion module + classifier
 │── train.py      	  # Training pipeline (config, dataloaders, optimizer, logging)
 │── requirements.txt  # Required Python packages
-|── Usage			  # Usage
 # Other models are provided at the same level.
+# All source code is provided in the src folder.
 ```
 
 
