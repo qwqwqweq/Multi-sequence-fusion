@@ -12,8 +12,10 @@ Directory/
 │── dataset.py        # Data loading, preprocessing, augmentation
 │── convertNii.py     # DICOM to NIfTI conversion and sequence extraction tool
 │── model.py      	  # 3D EfficientNet-B0 backbone + cross-modal fusion module + classifier
+│── train.py      	  # Training pipeline (config, dataloaders, optimizer, logging)
 │── requirements.txt  # Required Python packages
 |── Usage			  # Usage
+# Other models are provided at the same level.
 ```
 
 
@@ -49,18 +51,26 @@ This file contains the full implementation of our proposed model:
 
 The model **outputs logits**, not Softmax probabilities, to match PyTorch’s standard training workflow (CrossEntropyLoss).
 
-## 5.requirements.txt
+
+
+## 5.train.py
+
+This file provides a full PyTorch training pipeline:
+
+
+
+## 6.requirements.txt
 
 - Required Python packages
 
 
 
-## 6.Usage
+## 7.Usage
 
 **1. Prepare the dataset**
 
 - Use `convertNii.py` to process raw DICOM files:
-   extract sequence information → classify T1/T2 series → ensure completeness → convert to `.nii.gz`.
+  extract sequence information → classify T1/T2 series → ensure completeness → convert to `.nii.gz`.
 - Organize subjects into **normal / osteopenia / osteoporosis** folders.
 - Place each subject’s processed **T1** and **T2** volumes into the corresponding modality subfolders.
 - Ensure each subject contains a **valid T1–T2 pair**.
@@ -70,10 +80,15 @@ The model **outputs logits**, not Softmax probabilities, to match PyTorch’s st
 - Update `root_path`, class names, and folder structure based on your dataset organization.
 - Adjust preprocessing options such as resampling size, intensity normalization, or augmentation settings.
 
-**3. Integrate into your own training pipeline**
+**3. Training the model**
 
-- This repository does **not** include training scripts.
-   Import `dataset.py` and `model.py` into your custom training code as needed.
+- Run
+
+  ````shell
+  python train.py
+  ````
+
+- Or import `dataset.py` and `model.py` into your custom training code as needed.
 
 ```bash
 Data Format (After Preprocessing)
