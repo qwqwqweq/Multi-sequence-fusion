@@ -49,9 +49,6 @@ This file contains the full implementation of our proposed model:
 
 The model **outputs logits**, not Softmax probabilities, to match PyTorch’s standard training workflow (CrossEntropyLoss).
 
-
-## 
-
 ## 5.requirements.txt
 
 - Required Python packages
