@@ -1,4 +1,4 @@
-bsl-py==2.1.0
+absl-py==2.1.0
 accelerate==1.10.1
 acres==0.5.0
 aiofiles==25.1.0
